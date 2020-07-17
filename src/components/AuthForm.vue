@@ -7,3 +7,7 @@ export default {
   name: "AuthForm"
 };
 </script>
+
+<style lang="scss">
+@import "@/scss/components/AuthForm.scss";
+</style>

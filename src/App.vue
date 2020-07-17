@@ -5,7 +5,5 @@
 </template>
 
 <style lang="scss">
-body {
-  background: $appBgGradiend;
-}
+@import "@/scss/components/_main.scss";
 </style>

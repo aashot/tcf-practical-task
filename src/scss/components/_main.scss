@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap");
+
+body {
+    background: $appBgGradiend;
+    font-family: $fontFamily;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+    font-style: normal;
+    color: $titleColor;
+    letter-spacing: $titleLetterSpacing;
+}
+
+h1 {
+    font-weight: 900;
+    font-size: 47px;
+    line-height: 56px;
+    display: flex;
+    align-items: center;
+}
+
+h2 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 52px;
+}
+
+h3 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 39px;
+}
+
+h4 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 27px;
+    line-height: 35px;
+}

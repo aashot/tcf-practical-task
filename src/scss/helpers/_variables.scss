@@ -1,0 +1,31 @@
+// gradients
+$appBgGradiend: radial-gradient(205.56% 311.83% at 34.65% -3.04%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.47) 100%),
+    radial-gradient(87.1% 348.28% at 26.22% 31.96%, #4425c1 0%, #2d32a9 100%), #4326b8;
+$primaryGradient: linear-gradient(109.1deg, #727cf5 5.45%, #4cc0ec 74.58%);
+$secondaryGradient: linear-gradient(109.1deg, #0acf97 5.45%, #0eaae7 74.58%);
+
+// colors
+$appThemeColor: #727cf5;
+$white: #ffffff;
+$titleColor: rgba(80, 80, 80, 0.7);
+$secondary: #0acf97;
+$thirthly: #8da0a9;
+$rectangle: #b8cdd7;
+$fivethly: #fa5c7c;
+$grey1: #333333;
+$grey2: #858585;
+$grey3: #9b9b9b;
+$grey4: #c7c4c4;
+$grey5: #f4f4f4;
+$grey6: #f9f9f9;
+$errorsColor: #ffbc00;
+
+// sizes
+$borderRadius: 5px;
+$titleLetterSpacing: 0.056px;
+
+// fonst
+$fontFamily: "Nunito", sans-serif;
+
+//box shadows
+$boxShadow: 0px 4px 50px rgba(0, 0, 0, 0.25);

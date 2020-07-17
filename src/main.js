@@ -10,6 +10,13 @@ import firebaseConfig from '@/firebase/firebaseConfig.js';
 import 'firebase/auth';
 import 'firebase/database';
 
+// Gloabl components
+
+
+Vue.component(
+  'BaseButton', () => import('./components/elements/BaseButton.vue')
+)
+
 firebase.initializeApp(firebaseConfig);
 
 let app;

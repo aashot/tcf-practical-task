@@ -3,6 +3,8 @@
 body {
     background: $appBgGradiend;
     font-family: $fontFamily;
+    font-style: normal;
+    font-weight: normal;
 }
 
 h1,
@@ -44,10 +46,42 @@ h4 {
     line-height: 35px;
 }
 
-.auth {
+a {
+    color: $appThemeColor;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    padding: 13px 16px;
+    height: auto;
+
+    &::placeholder {
+        color: $grey3;
+        font-size: 13px;
+        line-height: 19px;
+        opacity: 0.8;
+    }
+}
+
+button {
+    &:focus {
+        outline: none;
+    }
+}
+
+.singup,
+.login {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     height: 100vh;
     width: 100%;
+}
+
+.login {
+    .auth-block__form {
+        padding-bottom: 0;
+    }
 }

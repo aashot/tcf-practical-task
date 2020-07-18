@@ -1,7 +1,40 @@
 .auth-block {
     background: $white;
-    width: 450px;
-    height: 669px;
+    min-width: 450px;
     box-shadow: $boxShadow;
     border-radius: $borderRadius;
+    padding: 48px 63px;
+
+    &--title {
+        font-size: 19px;
+        color: $grey1;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 17px;
+    }
+
+    &--text {
+        text-align: center;
+        font-size: 14px;
+    }
+
+    &__form {
+        border-top: solid 1px $grey7;
+        padding: 30px 0;
+        font-size: 13px;
+
+        &--switch-from {
+            margin-top: 44px;
+            text-align: center;
+        }
+
+        &--submit-btn {
+            width: 100%;
+        }
+
+        &--forgot-password {
+            text-align: right;
+            margin-top: 10px;
+        }
+    }
 }

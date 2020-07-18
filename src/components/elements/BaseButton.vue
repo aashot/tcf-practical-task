@@ -1,12 +1,13 @@
 <template>
-  <button class="base-button" :class="btnClass">{{ name }}</button>
+  <button class="base-button" :class="btnClass">
+    <slot></slot>
+  </button>
 </template>
 
 <script>
 export default {
   name: "BaseButton",
   props: {
-    name: String,
     btnClass: String
   }
 };
@@ -23,6 +24,7 @@ export default {
   line-height: 23px;
   color: $white;
   transition: 0.3s ease-in-out;
+  white-space: nowrap;
 
   &:hover {
     box-shadow: $boxShadow2;

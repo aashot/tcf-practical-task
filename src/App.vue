@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-    <b-container class="view-container" :class="{ 'theme-white': user }" fluid>
+  <div id="app" :class="theme">
+    <b-container class="view-container" fluid>
       <b-row>
         <b-col cols="12">
           <router-view />
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
+import { mapMutations, mapState } from "vuex";
 import firebase from "firebase/app";
 
 export default {
@@ -19,7 +19,7 @@ export default {
 
   computed: {
     ...mapState({
-      user: state => state.user
+      theme: state => state.theme
     })
   },
 

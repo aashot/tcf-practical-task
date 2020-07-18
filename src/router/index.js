@@ -45,7 +45,7 @@ router.beforeEach((to, from, next) => {
     next();
   }
 
-  if (to.meta.layout === 'auth' && currentUser) {
+  if (to.meta.layout === 'auth' && currentUser && currentUser.emailVerified) {
     next({ name: 'dashboard' });
   }
 })

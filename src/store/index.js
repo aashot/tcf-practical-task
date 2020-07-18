@@ -7,7 +7,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     error: null,
-    user: null
+    user: null,
+    theme: 'theme-blue'
   },
   mutations: {
     SET_ERROR(state, payload) {
@@ -21,6 +22,12 @@ export default new Vuex.Store({
     },
     REMOVE_CURRENT_USER(state) {
       state.user = null;
+    },
+    SET_THEME_WHITE(state) {
+      state.theme = 'theme-white'
+    },
+    SET_THEME_BLUE(state) {
+      state.theme = 'theme-blue'
     }
   },
   actions: {

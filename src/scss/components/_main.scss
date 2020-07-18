@@ -69,12 +69,12 @@ button {
     }
 }
 
-.view-container {
-    background: $authPageGradient;
+.theme-blue {
+    background: $blueGradient;
+}
 
-    &.theme-white {
-        background: $grey8;
-    }
+.theme-white {
+    background: $grey8;
 }
 
 .singup,

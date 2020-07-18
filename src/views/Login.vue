@@ -90,6 +90,7 @@ export default {
 
       try {
         await this.login(formData);
+        console.log(firebase.auth().currentUser);
         if (this.isUserEmailVerified) {
           this.$router.push({ name: "dashboard" });
         } else {

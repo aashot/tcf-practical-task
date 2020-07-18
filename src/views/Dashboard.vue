@@ -12,13 +12,18 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapMutations } from "vuex";
 
 export default {
   name: "dashboard",
 
+  created() {
+    this.SET_THEME_WHITE();
+  },
+
   methods: {
     ...mapActions("auth", ["logout"]),
+    ...mapMutations(["SET_THEME_WHITE"]),
 
     async handleLogout() {
       await this.logout();

@@ -28,15 +28,15 @@ const routes = [
     component: Dashboard,
   },
   {
-    path: 'dashboard/add-campaign',
+    path: '/add-campaign',
     name: 'add-campaign',
-    meta: { layout: 'main', auth: true },
+    meta: { layout: 'add-campaign', auth: true },
     component: () => import('@/views/AddCampaign.vue'),
   },
   {
-    path: 'dashboard/edit-campaign',
+    path: '/edit-campaign',
     name: 'edit-campaign',
-    meta: { layout: 'main', auth: true },
+    meta: { layout: 'edit-campaign', auth: true },
     component: () => import('@/views/EditCampaign.vue'),
   }
 ];

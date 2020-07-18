@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <b-container fluid>
+    <b-container class="view-container" fluid>
       <b-row>
         <b-col cols="12">
           <router-view />

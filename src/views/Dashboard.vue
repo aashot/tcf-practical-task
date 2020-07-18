@@ -1,6 +1,13 @@
 <template>
   <div class="dashboard">
-    <button class="dashboard--logout-btn" @click="handleLogout">Logout</button>
+    <nav class="dashboard__nav">
+      <base-button class="dashboard__nav--btn">Create</base-button>
+      <base-button
+        class="dashboard__nav--btn dashboard__nav--logout-btn"
+        @click.native="handleLogout"
+        inverted
+      >Logout</base-button>
+    </nav>
   </div>
 </template>
 

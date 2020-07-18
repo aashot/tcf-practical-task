@@ -1,5 +1,5 @@
 <template>
-  <button class="base-button" :class="btnClass">
+  <button class="base-button" :class="{ btnClass, 'inverted': inverted }">
     <slot></slot>
   </button>
 </template>
@@ -8,7 +8,8 @@
 export default {
   name: "BaseButton",
   props: {
-    btnClass: String
+    btnClass: String,
+    inverted: Boolean
   }
 };
 </script>
@@ -28,6 +29,15 @@ export default {
 
   &:hover {
     box-shadow: $boxShadow2;
+  }
+
+  &.inverted {
+    background: transparent;
+    color: $appThemeColor;
+
+    &:hover {
+      box-shadow: unset;
+    }
   }
 }
 </style>

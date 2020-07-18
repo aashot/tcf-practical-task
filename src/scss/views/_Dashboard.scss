@@ -1,14 +1,17 @@
 .dashboard {
     height: 100vh;
-    position: relative;
 
-    &--logout-btn {
-        cursor: pointer;
-        position: absolute;
-        top: 30px;
-        right: 16px;
-        color: $white;
-        border: none;
-        background: transparent;
+    &__nav {
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 41px;
+
+        &--btn {
+            padding: 16px 55px !important;
+        }
+
+        &--logout-btn {
+            padding: 0;
+        }
     }
 }

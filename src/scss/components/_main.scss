@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap");
 
 body {
-    background: $appBgGradiend;
     font-family: $fontFamily;
     font-style: normal;
     font-weight: normal;
@@ -67,6 +66,14 @@ input[type="email"] {
 button {
     &:focus {
         outline: none;
+    }
+}
+
+.view-container {
+    background: $authPageGradient;
+
+    &.theme-white {
+        background: $grey8;
     }
 }
 

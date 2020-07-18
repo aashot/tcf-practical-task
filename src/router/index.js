@@ -25,8 +25,20 @@ const routes = [
     path: '/',
     name: 'dashboard',
     meta: { layout: 'main', auth: true },
-    component: Dashboard
+    component: Dashboard,
   },
+  {
+    path: 'dashboard/add-campaign',
+    name: 'add-campaign',
+    meta: { layout: 'main', auth: true },
+    component: () => import('@/views/AddCampaign.vue'),
+  },
+  {
+    path: 'dashboard/edit-campaign',
+    name: 'edit-campaign',
+    meta: { layout: 'main', auth: true },
+    component: () => import('@/views/EditCampaign.vue'),
+  }
 ];
 
 const router = new VueRouter({

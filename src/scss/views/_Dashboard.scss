@@ -6,6 +6,12 @@
         justify-content: flex-end;
         padding-top: 41px;
 
+        &__link {
+            &:hover {
+                text-decoration: none;
+            }
+        }
+
         &--btn {
             padding: 16px 55px !important;
         }

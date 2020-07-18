@@ -1,7 +1,9 @@
 <template>
   <div class="dashboard">
     <nav class="dashboard__nav">
-      <base-button class="dashboard__nav--btn">Create</base-button>
+      <router-link :to="{ name: 'add-campaign' }" class="dashboard__nav__link">
+        <base-button class="dashboard__nav--btn">Create</base-button>
+      </router-link>
       <base-button
         class="dashboard__nav--btn dashboard__nav--logout-btn"
         @click.native="handleLogout"

@@ -45,6 +45,7 @@
 
 <script>
 import BasePasswordInput from "@/components/elements/BasePasswordInput.vue";
+import { mapActions, mapState } from "vuex";
 
 export default {
   name: "SingUp",
@@ -59,8 +60,41 @@ export default {
     password: null
   }),
 
+  computed: {
+    ...mapState({
+      error: state => state.error
+    })
+  },
+
+  watch: {
+    error(fbError) {
+      console.log(fbError);
+      this.$bvToast.toast(fbError.message || "Something went wrong!", {
+        title: "Sing Up Error",
+        autoHideDelay: 5000,
+        appendToast: false,
+        variant: "danger"
+      });
+    }
+  },
+
   methods: {
-    submitSignUpForm() {}
+    ...mapActions("auth", ["signup"]),
+
+    async submitSignUpForm() {
+      const formData = {
+        name: this.name,
+        email: this.email,
+        password: this.password
+      };
+
+      try {
+        await this.signup(formData);
+        this.$router.push({ name: "dashboard" });
+      } catch (e) {
+        console.error("Sign Up Error:", e);
+      }
+    }
   }
 };
 </script>

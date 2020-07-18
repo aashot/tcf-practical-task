@@ -31,6 +31,7 @@
 
 <script>
 import BasePasswordInput from "@/components/elements/BasePasswordInput.vue";
+import { mapActions, mapState } from "vuex";
 
 export default {
   name: "Login",
@@ -41,8 +42,40 @@ export default {
 
   data: () => ({ email: null, password: null }),
 
+  computed: {
+    ...mapState({
+      error: state => state.error
+    })
+  },
+
+  watch: {
+    error(fbError) {
+      console.log(fbError);
+      this.$bvToast.toast(fbError.message || "Something went wrong!", {
+        title: "Login Error",
+        autoHideDelay: 5000,
+        appendToast: false,
+        variant: "danger"
+      });
+    }
+  },
+
   methods: {
-    submitLoginForm() {}
+    ...mapActions("auth", ["login"]),
+
+    async submitLoginForm() {
+      const formData = {
+        email: this.email,
+        password: this.password
+      };
+
+      try {
+        await this.login(formData);
+        this.$router.push({ name: "dashboard" });
+      } catch (e) {
+        console.error("Login Error:", e);
+      }
+    }
   }
 };
 </script>

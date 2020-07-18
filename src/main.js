@@ -11,8 +11,6 @@ import 'firebase/auth';
 import 'firebase/database';
 
 // Gloabl components
-
-
 Vue.component(
   'BaseButton', () => import('./components/elements/BaseButton.vue')
 )

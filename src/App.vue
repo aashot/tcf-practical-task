@@ -12,12 +12,7 @@
 
 <script>
 export default {
-  name: "App",
-  created() {
-    if (this.$route.name !== "signup") {
-      this.$router.push({ name: "signup" });
-    }
-  }
+  name: "App"
 };
 </script>
 

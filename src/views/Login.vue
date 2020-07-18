@@ -19,7 +19,12 @@
           <a href="#">Forgot password?</a>
         </p>
 
-        <base-button class="auth-block__form--submit-btn">Login</base-button>
+        <base-button class="auth-block__form--submit-btn">
+          Login
+          <transition name="fade">
+            <b-spinner v-if="preloaderOn" class="loader" small></b-spinner>
+          </transition>
+        </base-button>
       </b-form>
 
       <p class="auth-block__form--switch-from">
@@ -44,7 +49,11 @@ export default {
     BasePasswordInput
   },
 
-  data: () => ({ email: null, password: null }),
+  data: () => ({
+    email: null,
+    password: null,
+    preloaderOn: false
+  }),
 
   computed: {
     ...mapState({
@@ -83,6 +92,8 @@ export default {
     ...mapActions("auth", ["login"]),
 
     async submitLoginForm() {
+      this.preloaderOn = true;
+
       const formData = {
         email: this.email,
         password: this.password
@@ -90,7 +101,6 @@ export default {
 
       try {
         await this.login(formData);
-        console.log(firebase.auth().currentUser);
         if (this.isUserEmailVerified) {
           this.$router.push({ name: "dashboard" });
         } else {
@@ -103,6 +113,8 @@ export default {
         }
       } catch (e) {
         console.error("Login Error:", e);
+      } finally {
+        this.preloaderOn = false;
       }
     }
   }

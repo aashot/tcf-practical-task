@@ -26,6 +26,12 @@ export default {
   color: $white;
   transition: 0.3s ease-in-out;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+
+  .loader {
+    margin-left: 10px;
+  }
 
   &:hover {
     box-shadow: $boxShadow2;

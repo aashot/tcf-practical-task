@@ -28,7 +28,12 @@
 
         <base-password-input v-model="password" />
 
-        <base-button type="submit" class="auth-block__form--submit-btn">Sign Up</base-button>
+        <base-button type="submit" class="auth-block__form--submit-btn">
+          Sign Up
+          <transition name="fade">
+            <b-spinner v-if="preloaderOn" class="loader" small></b-spinner>
+          </transition>
+        </base-button>
       </b-form>
 
       <p class="auth-block--text">
@@ -57,7 +62,8 @@ export default {
   data: () => ({
     name: null,
     email: null,
-    password: null
+    password: null,
+    preloaderOn: false
   }),
 
   computed: {
@@ -82,6 +88,8 @@ export default {
     ...mapActions("auth", ["signup"]),
 
     async submitSignUpForm() {
+      this.preloaderOn = true;
+
       const formData = {
         name: this.name,
         email: this.email,
@@ -99,6 +107,8 @@ export default {
         }, 200);
       } catch (e) {
         console.error("Sign Up Error:", e);
+      } finally {
+        this.preloaderOn = false;
       }
     }
   }

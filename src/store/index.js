@@ -6,7 +6,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    error: null
+    error: null,
+    user: null
   },
   mutations: {
     SET_ERROR(state, payload) {
@@ -14,6 +15,12 @@ export default new Vuex.Store({
     },
     CLEAR_ERROR(state) {
       state.error = null;
+    },
+    SET_CURRENT_USER(state, payload) {
+      state.user = payload;
+    },
+    REMOVE_CURRENT_USER(state) {
+      state.user = null;
     }
   },
   actions: {

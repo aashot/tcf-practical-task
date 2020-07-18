@@ -1,10 +1,10 @@
-import '@babel/polyfill'
-import 'mutationobserver-shim'
-import Vue from 'vue'
-import './plugins/bootstrap-vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
+import '@babel/polyfill';
+import 'mutationobserver-shim';
+import Vue from 'vue';
+import './plugins/bootstrap-vue';
+import App from './App.vue';
+import router from './router';
+import store from './store';
 import firebase from "firebase/app";
 import firebaseConfig from '@/firebase/firebaseConfig.js';
 import 'firebase/auth';
@@ -26,7 +26,7 @@ firebase.auth().onAuthStateChanged(() => {
       router,
       store,
       render: h => h(App)
-    }).$mount('#app')
+    }).$mount('#app');
   }
 })
 

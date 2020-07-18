@@ -12,12 +12,12 @@ const routes = [
     path: '/signup',
     name: 'signup',
     component: SignUp,
-    meta: { layout: 'empty' },
+    meta: { layout: 'auth' },
   },
   {
     path: '/login',
     name: 'login',
-    meta: { layout: 'empty' },
+    meta: { layout: 'auth' },
     props: true,
     component: Login
   },
@@ -43,6 +43,10 @@ router.beforeEach((to, from, next) => {
     next({ name: 'login' });
   } else {
     next();
+  }
+
+  if (to.meta.layout === 'auth' && currentUser) {
+    next({ name: 'dashboard' });
   }
 })
 

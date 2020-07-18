@@ -6,15 +6,17 @@ export default {
         async login({ commit }, { email, password }) {
             // eslint-disable-next-line no-useless-catch
             try {
-                await firebase.auth().signInWithEmailAndPassword(email, password);
+                const user = await firebase.auth().signInWithEmailAndPassword(email, password);
+                commit('SET_CURRENT_USER', user, { root: true });
             } catch (e) {
                 commit('SET_ERROR', e, { root: true });
                 throw e;
             }
         },
 
-        async logout() {
+        async logout({ commit }) {
             await firebase.auth().signOut();
+            commit('REMOVE_CURRENT_USER', null, { root: true });
         },
 
         async signup({ dispatch, commit }, { email, password, name }) {

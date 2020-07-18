@@ -51,10 +51,8 @@ export default {
       error: state => state.error
     }),
 
-    isUserRequiresEmailVerification() {
-      return (
-        firebase.auth().currentUser && firebase.auth().currentUser.emailVerified
-      );
+    isUserEmailVerified() {
+      return firebase.auth().currentUser.emailVerified;
     }
   },
 
@@ -92,7 +90,7 @@ export default {
 
       try {
         await this.login(formData);
-        if (this.isUserRequiresEmailVerification) {
+        if (this.isUserEmailVerified) {
           this.$router.push({ name: "dashboard" });
         } else {
           this.$bvToast.toast("Please verify your email!", {

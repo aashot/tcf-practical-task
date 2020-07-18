@@ -90,7 +90,13 @@ export default {
 
       try {
         await this.signup(formData);
-        this.$router.push({ name: "dashboard" });
+
+        setTimeout(() => {
+          this.$router.push({
+            name: "login",
+            params: { requiresUserEmailVerification: true }
+          });
+        }, 200);
       } catch (e) {
         console.error("Sign Up Error:", e);
       }

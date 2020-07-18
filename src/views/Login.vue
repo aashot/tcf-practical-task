@@ -30,11 +30,15 @@
 </template>
 
 <script>
-import BasePasswordInput from "@/components/elements/BasePasswordInput.vue";
 import { mapActions, mapState } from "vuex";
+import firebase from "firebase/app";
+import BasePasswordInput from "@/components/elements/BasePasswordInput.vue";
 
 export default {
   name: "Login",
+  props: {
+    requiresUserEmailVerification: Boolean
+  },
 
   components: {
     BasePasswordInput
@@ -45,7 +49,13 @@ export default {
   computed: {
     ...mapState({
       error: state => state.error
-    })
+    }),
+
+    isUserRequiresEmailVerification() {
+      return (
+        firebase.auth().currentUser && firebase.auth().currentUser.emailVerified
+      );
+    }
   },
 
   watch: {
@@ -56,6 +66,17 @@ export default {
         autoHideDelay: 5000,
         appendToast: false,
         variant: "danger"
+      });
+    }
+  },
+
+  created() {
+    if (this.requiresUserEmailVerification) {
+      this.$bvToast.toast("Now, please verify your email and login!", {
+        title: "Success!",
+        autoHideDelay: 5000,
+        appendToast: false,
+        variant: "success"
       });
     }
   },
@@ -71,7 +92,16 @@ export default {
 
       try {
         await this.login(formData);
-        this.$router.push({ name: "dashboard" });
+        if (this.isUserRequiresEmailVerification) {
+          this.$router.push({ name: "dashboard" });
+        } else {
+          this.$bvToast.toast("Please verify your email!", {
+            title: "Warning!",
+            autoHideDelay: 5000,
+            appendToast: false,
+            variant: "warning"
+          });
+        }
       } catch (e) {
         console.error("Login Error:", e);
       }

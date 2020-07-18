@@ -18,6 +18,7 @@ const routes = [
     path: '/login',
     name: 'login',
     meta: { layout: 'empty' },
+    props: true,
     component: Login
   },
   {

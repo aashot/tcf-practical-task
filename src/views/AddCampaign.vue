@@ -14,6 +14,20 @@
           <b-col cols="4">
             <div class="add-campaign__block__form__upload-image">
               <div class="add-campaign__block__form__upload-image__image-block">
+                <img
+                  v-if="imgPreviewUrl"
+                  class="add-campaign__block__form__upload-image__image-block--preview"
+                  :src="imgPreviewUrl"
+                  alt="image preview"
+                />
+
+                <input
+                  type="file"
+                  accept="image/*"
+                  class="add-campaign__block__form__upload-image__image-block--file-filed"
+                  @change="onFileChange"
+                />
+
                 <b-icon-cloud-upload
                   font-scale="3"
                   class="add-campaign__block__form__upload-image__image-block--icon"
@@ -79,7 +93,7 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapMutations, mapActions } from "vuex";
 import { BIconCloudUpload } from "bootstrap-vue";
 
 export default {
@@ -90,7 +104,9 @@ export default {
   },
 
   data: () => ({
+    imgPreviewUrl: null,
     form: {
+      img: null,
       title: null,
       text: null,
       url: null
@@ -103,8 +119,39 @@ export default {
 
   methods: {
     ...mapMutations(["SET_THEME_BLUE"]),
+    ...mapActions("campaigns", ["addCampaign"]),
 
-    submitComposeForm() {}
+    onFileChange(e) {
+      const file = e.target.files[0];
+      this.imgPreviewUrl = URL.createObjectURL(file);
+      this.form.img = file;
+    },
+
+    async submitComposeForm() {
+      // const formData = new FormData();
+
+      // formData.append("img", this.form.img);
+      // formData.append("title", this.form.title);
+      // formData.append("text", this.form.text);
+      // formData.append("url", this.form.url);
+
+      const formData = {
+        img: this.form.img,
+        title: this.form.title,
+        text: this.form.text,
+        url: this.form.url
+      };
+
+      console.log(this.form.img);
+
+      try {
+        const campaign = await this.addCampaign(formData);
+
+        console.log(campaign);
+      } catch (e) {
+        console.error("Add Campaign Error", e);
+      }
+    }
   }
 };
 </script>

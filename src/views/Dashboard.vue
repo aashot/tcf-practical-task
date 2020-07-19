@@ -3,17 +3,19 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapMutations, mapActions } from "vuex";
 
 export default {
   name: "dashboard",
 
-  created() {
+  async created() {
     this.SET_THEME_WHITE();
+    await this.fetchCampaigns();
   },
 
   methods: {
-    ...mapMutations(["SET_THEME_WHITE"])
+    ...mapMutations(["SET_THEME_WHITE"]),
+    ...mapActions("campaigns", ["fetchCampaigns"])
   }
 };
 </script>

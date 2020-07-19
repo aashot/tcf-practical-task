@@ -9,6 +9,7 @@ import firebase from "firebase/app";
 import firebaseConfig from '@/firebase/firebaseConfig.js';
 import 'firebase/auth';
 import 'firebase/database';
+import 'firebase/storage';
 
 // Gloabl components
 Vue.component(

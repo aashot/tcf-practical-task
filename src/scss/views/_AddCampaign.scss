@@ -1,2 +1,134 @@
+.campaign-form {
+    height: 100%;
+}
+
 .add-campaign {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
+    &__block {
+        background: $white;
+        max-width: 1440px;
+        width: 1000px;
+        padding: 36px 54px;
+        padding-bottom: 0;
+        border-radius: $borderRadius;
+
+        &--title {
+            margin-bottom: 14px;
+        }
+
+        &--text {
+            max-width: 353px;
+        }
+
+        &__form {
+            padding: 45px 0;
+            border-top: solid $grey5 1px;
+
+            &__upload-image {
+                font-size: 11px;
+                line-height: 15px;
+                text-align: center;
+                width: 208px;
+                height: 208px;
+
+                &__image-block {
+                    background: $grey5;
+                    border-radius: $borderRadius;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                    padding: 0 45px;
+                    height: 100%;
+                    margin-bottom: 17px;
+                    cursor: pointer;
+
+                    &--text {
+                        color: $grey2;
+                    }
+                }
+
+                &--text {
+                    color: $grey9;
+                    max-width: 118px;
+                    margin: auto;
+                }
+
+                &__image-block {
+                    &--icon {
+                        color: $rectangle;
+                        margin-bottom: 15px;
+                    }
+                }
+            }
+
+            .filed-wrap {
+                position: relative;
+
+                .filed-label {
+                    position: absolute;
+                    left: 10px;
+                    top: -7px;
+                    color: $grey4;
+                    font-size: 11px;
+                    line-height: 15px;
+                    background: $white;
+                    padding-left: 5px;
+                    padding-right: 15px;
+                }
+            }
+
+            &--field {
+                border: solid $grey4 1px;
+                outline: none;
+                margin-bottom: 23px;
+                color: #bdbdbd;
+
+                &:focus {
+                    box-shadow: none;
+                    border-color: $grey4;
+                }
+            }
+
+            &--title-filed {
+                font-weight: bold;
+                font-size: 16px;
+                line-height: 23px;
+                color: $grey2;
+            }
+
+            &--text-filed {
+                height: 126px !important;
+            }
+        }
+
+        &__actions {
+            margin-top: 45px;
+            padding: 25px 0;
+            border-top: solid $grey5 1px;
+
+            &--btn-wrap {
+                padding: 0;
+            }
+
+            &--btn {
+                padding: 11px 27px !important;
+            }
+
+            &--cancel {
+                margin-right: auto;
+            }
+
+            &--save {
+                background: transparent !important;
+                color: $thirthly !important;
+                border: solid $thirthly 1px !important;
+                margin-left: auto;
+            }
+        }
+    }
 }

@@ -45,5 +45,9 @@ export default {
       box-shadow: unset;
     }
   }
+
+  &.color-white {
+    color: $white;
+  }
 }
 </style>

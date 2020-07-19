@@ -5,6 +5,7 @@
     </router-link>
     <base-button
       class="app-navbar--btn app-navbar--logout-btn"
+      :class="{ 'color-white': createBtnVisible }"
       @click.native="handleLogout"
       inverted
     >Logout</base-button>
@@ -21,10 +22,6 @@ export default {
     createBtnVisible() {
       return this.$route.meta.layout === "compose-campaign";
     }
-  },
-
-  created() {
-    console.log(this.$route);
   },
 
   methods: {

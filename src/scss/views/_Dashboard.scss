@@ -5,4 +5,15 @@
         grid-gap: 54px;
         padding: 41px;
     }
+
+    &__delete-campaign-modal {
+        &__actions {
+            display: flex;
+            justify-content: center;
+
+            &--btn {
+                padding: 10px 30px !important;
+            }
+        }
+    }
 }

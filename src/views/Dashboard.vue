@@ -5,8 +5,29 @@
         v-for="(campaign, campaignIndex) of campaigns"
         :key="campaignIndex"
         :params="campaign"
+        @deleteAction="openConfirmationModal"
       />
     </div>
+
+    <b-modal
+      id="deleteCampaign"
+      size="sm"
+      class="dashboard__delete-campaign-modal"
+      title="Are you sure?"
+      hide-footer
+    >
+      <div class="dashboard__delete-campaign-modal__actions">
+        <base-button
+          class="dashboard__delete-campaign-modal__actions--btn"
+          @click.native="closeDeleteCampaignModal"
+          inverted
+        >Cancel</base-button>
+        <base-button
+          class="dashboard__delete-campaign-modal__actions--btn"
+          @click.native="deleteCampaign"
+        >Yes</base-button>
+      </div>
+    </b-modal>
   </div>
 </template>
 
@@ -32,7 +53,19 @@ export default {
   },
 
   methods: {
-    ...mapActions("campaigns", ["fetchCampaigns"])
+    ...mapActions("campaigns", ["fetchCampaigns"]),
+
+    closeDeleteCampaignModal() {
+      this.$bvModal.hide("deleteCampaign");
+    },
+
+    openConfirmationModal() {
+      this.$bvModal.show("deleteCampaign");
+    },
+
+    deleteCampaign() {
+      this.$bvModal.hide("deleteCampaign");
+    }
   }
 };
 </script>

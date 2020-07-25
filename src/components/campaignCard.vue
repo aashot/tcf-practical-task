@@ -25,10 +25,12 @@
     </div>
 
     <div class="campaigns-card__actions">
-      <div class="campaigns-card__actions--btn">
-        <img src="@/assets/icons/edit.svg" alt="edit icon" />
-      </div>
-      <div class="campaigns-card__actions--btn">
+      <router-link :to="{ name: 'edit-campaign', params: { id: params.campaignId } }">
+        <div class="campaigns-card__actions--btn">
+          <img src="@/assets/icons/edit.svg" alt="edit icon" />
+        </div>
+      </router-link>
+      <div class="campaigns-card__actions--btn" @click="$emit('deleteAction')">
         <img src="@/assets/icons/trash.svg" alt="delete icon" />
       </div>
     </div>

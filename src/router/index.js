@@ -35,7 +35,7 @@ const routes = [
     component: () => import('@/views/AddCampaign.vue'),
   },
   {
-    path: '/edit-campaign',
+    path: '/edit-campaign/:id',
     name: 'edit-campaign',
     meta: { layout: 'compose-campaign', auth: true, bodyClass: "theme-blue" },
     component: () => import('@/views/EditCampaign.vue'),

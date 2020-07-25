@@ -2,14 +2,6 @@
   <b-form class="campaign-form" @submit.prevent="submitComposeForm">
     <div class="edit-campaign">
       <b-container class="edit-campaign__block">
-        <b-row>
-          <b-col cols="12">
-            <h4 class="edit-campaign__block--title">Add cross-promotion information</h4>
-            <p
-              class="edit-campaign__block--text"
-            >Add cross-promotion information that your partner campaigns are to post in their updates. You can always edit this information to adjust it to your needs.</p>
-          </b-col>
-        </b-row>
         <b-row class="edit-campaign__block__form">
           <b-col cols="4">
             <div class="edit-campaign__block__form__upload-image">
@@ -122,18 +114,30 @@ export default {
   }),
 
   created() {
-    this.setupData();
+    this.launchRouteGuard();
   },
 
   methods: {
     ...mapActions("campaigns", ["editCampaign", "fetchCampaigns"]),
 
-    async setupData() {
-      const campaigns = await this.fetchCampaigns();
-      this.campaign = campaigns.find(
-        item => item.campaignId === this.$route.params.id
-      );
+    async launchRouteGuard() {
+      if (this.$route.params.id) {
+        const campaigns = await this.fetchCampaigns();
+        const campaign = campaigns.find(
+          item => item.campaignId === this.$route.params.id
+        );
+        if (campaign) {
+          this.campaign = campaign;
+          this.setupData();
+        } else {
+          this.$router.push({ name: "dashboard" });
+        }
+      } else {
+        this.$router.push({ name: "dashboard" });
+      }
+    },
 
+    async setupData() {
       this.imgPreviewUrl = this.campaign.imgURL;
       this.form.title = this.campaign.title;
       this.form.text = this.campaign.text;

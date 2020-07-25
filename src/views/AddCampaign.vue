@@ -98,7 +98,7 @@
 </template>
 
 <script>
-import { mapMutations, mapActions } from "vuex";
+import { mapActions } from "vuex";
 import { BIconCloudUpload } from "bootstrap-vue";
 
 export default {
@@ -119,12 +119,7 @@ export default {
     preloaderOn: false
   }),
 
-  created() {
-    this.SET_THEME_BLUE();
-  },
-
   methods: {
-    ...mapMutations(["SET_THEME_BLUE"]),
     ...mapActions("campaigns", ["addCampaign"]),
 
     onFileChange(e) {

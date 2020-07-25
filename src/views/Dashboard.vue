@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { mapActions, mapMutations, mapState } from "vuex";
+import { mapActions, mapState } from "vuex";
 import CampaignCard from "@/components/CampaignCard.vue";
 
 export default {
@@ -28,12 +28,10 @@ export default {
   },
 
   async created() {
-    this.SET_THEME_WHITE();
     await this.fetchCampaigns();
   },
 
   methods: {
-    ...mapMutations(["SET_THEME_WHITE"]),
     ...mapActions("campaigns", ["fetchCampaigns"])
   }
 };

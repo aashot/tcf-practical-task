@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :class="theme">
+  <div id="app">
     <b-container class="view-container" fluid>
       <b-row>
         <b-col cols="12">

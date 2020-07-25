@@ -8,9 +8,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     error: null,
-    user: null,
-    theme: 'theme-blue',
-    campaigns: null
+    user: null
   },
   mutations: {
     SET_ERROR(state, payload) {
@@ -24,12 +22,6 @@ export default new Vuex.Store({
     },
     REMOVE_CURRENT_USER(state) {
       state.user = null;
-    },
-    SET_THEME_WHITE(state) {
-      state.theme = 'theme-white'
-    },
-    SET_THEME_BLUE(state) {
-      state.theme = 'theme-blue'
     },
     SET_COMPAIGNS(state, payload) {
       state.campaigns = payload;

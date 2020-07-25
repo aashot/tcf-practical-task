@@ -19,7 +19,7 @@ export default {
             // eslint-disable-next-line no-useless-catch
             try {
                 const uid = await dispatch('auth/getUserId', null, { root: true });
-                const snapshot = await firebase.storage().ref('/users/' + uid + '/campaigns').put(payload.img);
+                const snapshot = await firebase.storage().ref('/users/' + uid + '/campaigns/' + payload.campaignId).put(payload.img);
                 const snapshotURL = await snapshot.ref.getDownloadURL();
 
                 payload.imgURL = snapshotURL;

@@ -129,11 +129,16 @@ export default {
     },
 
     async submitComposeForm() {
+      const campaignId = Math.random()
+        .toString(36)
+        .substr(2, 9);
+
       const formData = {
         img: this.form.img,
         title: this.form.title,
         text: this.form.text,
-        url: this.form.url
+        url: this.form.url,
+        campaignId
       };
 
       this.preloaderOn = true;

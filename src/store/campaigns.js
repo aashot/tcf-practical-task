@@ -8,9 +8,10 @@ export default {
             try {
                 const uid = await dispatch('auth/getUserId', null, { root: true });
                 const campaigns = (await firebase.database().ref('/users/' + uid + '/campaigns').once('value')).val() || {};
-                commit('SET_COMPAIGNS', Object.values(campaigns), { root: true });
+                const campaignsList = Object.keys(campaigns).map(key => ({ ...campaigns[key], key }))
+                commit('SET_COMPAIGNS', Object.values(campaignsList), { root: true });
 
-                return Object.keys(campaigns).map(key => ({ ...campaigns[key], key }))
+                return campaignsList;
             } catch (e) {
                 commit('SET_ERROR', e, { root: true });
                 throw e;
@@ -46,6 +47,19 @@ export default {
                 }
 
                 await firebase.database().ref('/users/' + uid + '/campaigns').child(payload.key).update(payload);
+            } catch (e) {
+                commit('SET_ERROR', e, { root: true });
+                throw e;
+            }
+        },
+
+        async deleteCampaign({ commit, dispatch }, payload) {
+            // eslint-disable-next-line no-useless-catch
+            try {
+                const uid = await dispatch('auth/getUserId', null, { root: true });
+                console.log(payload);
+                await firebase.database().ref('/users/' + uid + '/campaigns').child(payload.key).remove();
+                await firebase.storage().ref('/users/' + uid + '/campaigns/' + payload.campaignId).delete();
             } catch (e) {
                 commit('SET_ERROR', e, { root: true });
                 throw e;

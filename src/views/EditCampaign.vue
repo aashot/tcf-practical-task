@@ -142,8 +142,10 @@ export default {
 
     onFileChange(e) {
       const file = e.target.files[0];
-      this.imgPreviewUrl = URL.createObjectURL(file);
-      this.form.img = file;
+      if (file) {
+        this.imgPreviewUrl = URL.createObjectURL(file);
+        this.form.img = file;
+      }
     },
 
     async submitComposeForm() {

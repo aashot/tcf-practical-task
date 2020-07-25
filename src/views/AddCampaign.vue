@@ -76,10 +76,12 @@
         </b-row>
         <b-row align-h="between" class="add-campaign__block__actions">
           <b-col class="add-campaign__block__actions--btn-wrap" cols="2">
-            <base-button
-              class="add-campaign__block__actions--btn add-campaign__block__actions--cancel"
-              inverted
-            >Cancel</base-button>
+            <router-link :to="{ name: 'dashboard' }">
+              <base-button
+                class="add-campaign__block__actions--btn add-campaign__block__actions--cancel"
+                inverted
+              >Cancel</base-button>
+            </router-link>
           </b-col>
           <b-col class="add-campaign__block__actions--btn-wrap" cols="2">
             <base-button
@@ -116,7 +118,8 @@ export default {
       text: null,
       url: null
     },
-    preloaderOn: false
+    preloaderOn: false,
+    prevRoute: null
   }),
 
   methods: {
@@ -124,8 +127,10 @@ export default {
 
     onFileChange(e) {
       const file = e.target.files[0];
-      this.imgPreviewUrl = URL.createObjectURL(file);
-      this.form.img = file;
+      if (file) {
+        this.imgPreviewUrl = URL.createObjectURL(file);
+        this.form.img = file;
+      }
     },
 
     async submitComposeForm() {

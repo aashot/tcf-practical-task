@@ -1,6 +1,7 @@
 <template>
   <div class="dashboard">
-    <div class="dashboard__campaings-list" v-if="campaigns && campaigns.length">
+    <base-page-loader v-if="!campaigns.length" />
+    <div v-else class="dashboard__campaings-list">
       <campaign-card
         v-for="(campaign, campaignIndex) of campaigns"
         :key="campaignIndex"

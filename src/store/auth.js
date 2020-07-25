@@ -8,7 +8,6 @@ export default {
             try {
                 const user = await firebase.auth().signInWithEmailAndPassword(email, password);
                 commit('SET_CURRENT_USER', user, { root: true });
-                commit('SET_THEME_BLUE', null, { root: true });
             } catch (e) {
                 commit('SET_ERROR', e, { root: true });
                 throw e;
@@ -18,7 +17,6 @@ export default {
         async logout({ commit }) {
             await firebase.auth().signOut();
             commit('REMOVE_CURRENT_USER', null, { root: true });
-            commit('SET_THEME_BLUE', null, { root: true });
         },
 
         async signup({ dispatch, commit }, { email, password, name }) {

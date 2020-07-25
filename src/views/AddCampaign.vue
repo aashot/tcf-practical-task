@@ -157,5 +157,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/scss/views/_AddCampaign.scss";
+@import "@/scss/views/_composeCampaign.scss";
 </style>

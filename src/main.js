@@ -13,8 +13,12 @@ import 'firebase/storage';
 
 // Gloabl components
 Vue.component(
-  'BaseButton', () => import('./components/elements/BaseButton.vue')
-)
+  'BaseButton', () => import('@/components/elements/BaseButton.vue')
+);
+Vue.component(
+  'BasePageLoader', () => import('@/components/elements/BasePageLoader.vue')
+);
+
 
 firebase.initializeApp(firebaseConfig);
 

@@ -1,5 +1,5 @@
 <template>
-  <button class="base-button" :class="{ btnClass, 'inverted': inverted }">
+  <button class="base-button" :type="type" :class="{ btnClass, 'inverted': inverted }">
     <slot></slot>
   </button>
 </template>
@@ -8,6 +8,7 @@
 export default {
   name: "BaseButton",
   props: {
+    type: String,
     btnClass: String,
     inverted: Boolean
   }

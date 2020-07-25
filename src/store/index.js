@@ -29,6 +29,9 @@ export default new Vuex.Store({
     },
     SET_THEME_BLUE(state) {
       state.theme = 'theme-blue'
+    },
+    SET_COMPAIGNS(state, payload) {
+      state.campaigns = payload;
     }
   },
   actions: {

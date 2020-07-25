@@ -84,7 +84,12 @@
           <b-col class="add-campaign__block__actions--btn-wrap" cols="2">
             <base-button
               class="add-campaign__block__actions--btn add-campaign__block__actions--save"
-            >Save</base-button>
+            >
+              Save
+              <transition name="fade">
+                <b-spinner v-if="preloaderOn" class="loader" small></b-spinner>
+              </transition>
+            </base-button>
           </b-col>
         </b-row>
       </b-container>
@@ -110,7 +115,8 @@ export default {
       title: null,
       text: null,
       url: null
-    }
+    },
+    preloaderOn: false
   }),
 
   created() {
@@ -128,13 +134,6 @@ export default {
     },
 
     async submitComposeForm() {
-      // const formData = new FormData();
-
-      // formData.append("img", this.form.img);
-      // formData.append("title", this.form.title);
-      // formData.append("text", this.form.text);
-      // formData.append("url", this.form.url);
-
       const formData = {
         img: this.form.img,
         title: this.form.title,
@@ -142,14 +141,15 @@ export default {
         url: this.form.url
       };
 
-      console.log(this.form.img);
+      this.preloaderOn = true;
 
       try {
-        const campaign = await this.addCampaign(formData);
-
-        console.log(campaign);
+        await this.addCampaign(formData);
+        this.$router.push({ name: "dashboard" });
       } catch (e) {
         console.error("Add Campaign Error", e);
+      } finally {
+        this.preloaderOn = false;
       }
     }
   }

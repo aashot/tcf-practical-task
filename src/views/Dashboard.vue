@@ -1,12 +1,31 @@
 <template>
-  <div class="dashboard"></div>
+  <div class="dashboard">
+    <div class="dashboard__campaings-list" v-if="campaigns && campaigns.length">
+      <campaign-card
+        v-for="(campaign, campaignIndex) of campaigns"
+        :key="campaignIndex"
+        :params="campaign"
+      />
+    </div>
+  </div>
 </template>
 
 <script>
-import { mapMutations, mapActions } from "vuex";
+import { mapActions, mapMutations, mapState } from "vuex";
+import CampaignCard from "@/components/CampaignCard.vue";
 
 export default {
   name: "dashboard",
+
+  components: {
+    CampaignCard
+  },
+
+  computed: {
+    ...mapState({
+      campaigns: state => state.campaigns
+    })
+  },
 
   async created() {
     this.SET_THEME_WHITE();

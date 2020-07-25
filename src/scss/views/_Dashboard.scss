@@ -1,21 +1,8 @@
 .dashboard {
-    &__nav {
-        display: flex;
-        justify-content: flex-end;
-        padding-top: 41px;
-
-        &__link {
-            &:hover {
-                text-decoration: none;
-            }
-        }
-
-        &--btn {
-            padding: 16px 55px !important;
-        }
-
-        &--logout-btn {
-            padding: 0;
-        }
+    &__campaings-list {
+        display: grid;
+        grid-template-columns: repeat(3, 0fr);
+        grid-gap: 54px;
+        padding: 41px;
     }
 }

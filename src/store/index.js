@@ -9,7 +9,8 @@ export default new Vuex.Store({
   state: {
     error: null,
     user: null,
-    theme: 'theme-blue'
+    theme: 'theme-blue',
+    campaigns: null
   },
   mutations: {
     SET_ERROR(state, payload) {

@@ -69,8 +69,14 @@ button {
     }
 }
 
+html,
+body,
+body {
+    height: 100%;
+}
+
 .view-container {
-    height: 100vh;
+    height: 100%;
 }
 
 .theme-blue {

@@ -4,6 +4,10 @@
       <b-row>
         <b-col cols="12">
           <navbar v-if="user" />
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col cols="12">
           <router-view />
         </b-col>
       </b-row>

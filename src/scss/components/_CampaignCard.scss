@@ -1,0 +1,102 @@
+.campaigns-card {
+    background-color: $white;
+    border-radius: $borderRadius;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__cover {
+        height: 289px;
+        width: 286px;
+        display: flex;
+        align-items: flex-end;
+        border-radius: $borderRadius2;
+        background-size: cover;
+        background-position: center;
+        margin: 15px 15px 18px 15px;
+        overflow: hidden;
+
+        &__info {
+            background-color: rgba(51, 51, 51, 0.7);
+            width: 100%;
+            padding: 5px 6px 8px 9px;
+            color: $white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            &__left-block {
+                width: 50%;
+
+                &--numbers {
+                    font-weight: 900;
+                    color: $white;
+                }
+            }
+
+            &__right-block {
+                width: 45%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                &--tag {
+                    background-color: $appThemeColor;
+                    border-radius: $borderRadius2;
+                    padding: 1px 8px;
+                    font-size: 11px;
+                }
+            }
+        }
+    }
+
+    &__info {
+        width: 100%;
+        padding: 0 24px;
+
+        &--title {
+            font-size: 19px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        &--author {
+            font-size: 13px;
+            margin-bottom: 35px;
+        }
+    }
+
+    &__actions {
+        width: 100%;
+        padding: 19px 24px 24px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 48px);
+            height: 1px;
+            background-color: $thirthly;
+            opacity: 0.5;
+        }
+
+        &--btn {
+            background-color: $grey5;
+            color: $rectangle;
+            padding: 7px;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+    }
+}

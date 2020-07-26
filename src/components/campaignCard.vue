@@ -25,7 +25,7 @@
     </div>
 
     <div class="campaigns-card__actions">
-      <router-link :to="{ name: 'edit-campaign', params: { id: params.campaignId } }">
+      <router-link :to="{ name: 'edit-campaign', params: { id: params.key } }">
         <div class="campaigns-card__actions--btn">
           <img src="@/assets/icons/edit.svg" alt="edit icon" />
         </div>
@@ -43,9 +43,9 @@ export default {
   props: {
     params: {
       type: Object,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 };
 </script>
 

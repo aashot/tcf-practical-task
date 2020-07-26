@@ -18,6 +18,19 @@ export default {
             }
         },
 
+        async fetchCampaignByKey({ commit, dispatch }, payload) {
+            // eslint-disable-next-line no-useless-catch
+            try {
+                const uid = await dispatch('auth/getUserId', null, { root: true });
+                const campaign = (await firebase.database().ref('/users/' + uid + '/campaigns/' + payload).once('value')).val() || {};
+
+                return campaign;
+            } catch (e) {
+                commit('SET_ERROR', e, { root: true });
+                throw e;
+            }
+        },
+
         async addCampaign({ commit, dispatch }, payload) {
             // eslint-disable-next-line no-useless-catch
             try {

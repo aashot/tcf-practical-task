@@ -107,7 +107,7 @@ export default {
   name: "AddCampaign",
 
   components: {
-    BIconCloudUpload
+    BIconCloudUpload,
   },
 
   data: () => ({
@@ -116,10 +116,10 @@ export default {
       img: null,
       title: null,
       text: null,
-      url: null
+      url: null,
     },
     preloaderOn: false,
-    prevRoute: null
+    prevRoute: null,
   }),
 
   methods: {
@@ -134,16 +134,14 @@ export default {
     },
 
     async submitComposeForm() {
-      const campaignId = Math.random()
-        .toString(36)
-        .substr(2, 9);
+      const campaignId = Math.random().toString(36).substr(2, 9);
 
       const formData = {
         img: this.form.img,
         title: this.form.title,
         text: this.form.text,
         url: this.form.url,
-        campaignId
+        campaignId,
       };
 
       this.preloaderOn = true;
@@ -156,8 +154,8 @@ export default {
       } finally {
         this.preloaderOn = false;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

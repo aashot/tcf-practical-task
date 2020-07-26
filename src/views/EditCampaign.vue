@@ -68,10 +68,12 @@
         </b-row>
         <b-row align-h="between" class="edit-campaign__block__actions">
           <b-col class="edit-campaign__block__actions--btn-wrap" cols="2">
-            <base-button
-              class="edit-campaign__block__actions--btn edit-campaign__block__actions--cancel"
-              inverted
-            >Cancel</base-button>
+            <router-link :to="{ name: 'dashboard' }">
+              <base-button
+                class="edit-campaign__block__actions--btn add-campaign__block__actions--cancel"
+                inverted
+              >Cancel</base-button>
+            </router-link>
           </b-col>
           <b-col class="edit-campaign__block__actions--btn-wrap" cols="2">
             <base-button
@@ -98,7 +100,7 @@ export default {
   name: "EditCampaign",
 
   components: {
-    BIconCloudUpload
+    BIconCloudUpload,
   },
 
   data: () => ({
@@ -107,10 +109,10 @@ export default {
       img: null,
       title: null,
       text: null,
-      url: null
+      url: null,
     },
     preloaderOn: false,
-    campaign: null
+    campaign: null,
   }),
 
   created() {
@@ -118,14 +120,12 @@ export default {
   },
 
   methods: {
-    ...mapActions("campaigns", ["editCampaign", "fetchCampaigns"]),
+    ...mapActions("campaigns", ["editCampaign", "fetchCampaignByKey"]),
 
     async launchRouteGuard() {
       if (this.$route.params.id) {
-        const campaigns = await this.fetchCampaigns();
-        const campaign = campaigns.find(
-          item => item.campaignId === this.$route.params.id
-        );
+        const campaign = await this.fetchCampaignByKey(this.$route.params.id);
+
         if (campaign) {
           this.campaign = campaign;
           this.setupData();
@@ -138,6 +138,7 @@ export default {
     },
 
     async setupData() {
+      this.campaign.key = this.$route.params.id;
       this.imgPreviewUrl = this.campaign.imgURL;
       this.form.title = this.campaign.title;
       this.form.text = this.campaign.text;
@@ -160,7 +161,7 @@ export default {
         url: this.form.url,
         campaignId: this.campaign.campaignId,
         imgURL: this.campaign.imgURL,
-        key: this.campaign.key
+        key: this.campaign.key,
       };
 
       this.preloaderOn = true;
@@ -173,8 +174,8 @@ export default {
       } finally {
         this.preloaderOn = false;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

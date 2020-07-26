@@ -23,7 +23,7 @@ export default {
                 await firebase.auth().createUserWithEmailAndPassword(email, password);
                 const uid = await dispatch('getUserId');
                 await firebase.database().ref(`/users/${uid}/info`).set({ name })
-                await firebase.auth().currentUser.sendEmailVerification({ url: 'http://localhost:8080/', }) // A real url should be here. ENV variables can be used
+                await firebase.auth().currentUser.sendEmailVerification({ url: 'https://tcf-practical-task.web.app', }) // .env variables can be used
             } catch (e) {
                 commit('SET_ERROR', e, { root: true });
                 throw e;

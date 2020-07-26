@@ -3,7 +3,7 @@
     <b-container class="view-container" fluid>
       <b-row>
         <b-col cols="12">
-          <navbar v-if="user" />
+          <navbar v-if="user && user.emailVerified" />
         </b-col>
       </b-row>
       <b-row>

@@ -19,7 +19,6 @@ Vue.component(
   'BasePageLoader', () => import('@/components/elements/BasePageLoader.vue')
 );
 
-
 firebase.initializeApp(firebaseConfig);
 
 let app;

@@ -151,4 +151,30 @@
             }
         }
     }
+
+    .campaign-title {
+        position: relative;
+
+        &__suggestions {
+            position: absolute;
+            left: 0;
+            top: 51px;
+            z-index: 1;
+            background: $white;
+            width: 100%;
+            max-height: 200px;
+            overflow: auto;
+            box-shadow: $boxShadow2;
+
+            &__item {
+                cursor: pointer;
+                transition: 0.1s ease-in-out;
+                padding: 10px 15px;
+
+                &:hover {
+                    background-color: $grey7;
+                }
+            }
+        }
+    }
 }

@@ -1,5 +1,5 @@
 <template>
-  <b-form class="campaign-form" @submit.prevent="submitComposeForm">
+  <b-form class="campaign-form" @submit.prevent="submitComposeForm" autocomplete="off">
     <div class="edit-campaign">
       <b-container class="edit-campaign__block">
         <b-row class="edit-campaign__block__form">
@@ -35,17 +35,11 @@
             </div>
           </b-col>
           <b-col cols="5">
-            <b-form-group id="input-group-title" class="filed-wrap">
-              <span class="filed-label">Title</span>
-
-              <b-form-input
-                class="edit-campaign__block__form--field edit-campaign__block__form--title-filed"
-                id="input-title"
-                v-model="form.title"
-                type="text"
-                required
-              ></b-form-input>
-            </b-form-group>
+            <autocomplete-input
+              :list="campaignsList"
+              v-model="form.title"
+              @selectItem="selectCampaign"
+            />
 
             <b-form-group id="input-group-text">
               <b-form-textarea
@@ -93,26 +87,31 @@
 </template>
 
 <script>
+import axios from "axios";
 import { mapActions } from "vuex";
 import { BIconCloudUpload } from "bootstrap-vue";
+import AutocompleteInput from "@/components/AutocompleteInput.vue";
 
 export default {
   name: "EditCampaign",
 
   components: {
     BIconCloudUpload,
+    AutocompleteInput,
   },
 
   data: () => ({
     imgPreviewUrl: null,
     form: {
       img: null,
-      title: null,
+      title: "",
       text: null,
       url: null,
     },
     preloaderOn: false,
     campaign: null,
+    campaignsEndpoint: "https://search.crossprom.com/campaigns",
+    campaignsList: [],
   }),
 
   created() {
@@ -125,6 +124,7 @@ export default {
     async launchRouteGuard() {
       if (this.$route.params.id) {
         const campaign = await this.fetchCampaignByKey(this.$route.params.id);
+        await this.fetchCampaignsForSearch();
 
         if (campaign) {
           this.campaign = campaign;
@@ -135,6 +135,21 @@ export default {
       } else {
         this.$router.push({ name: "dashboard" });
       }
+    },
+
+    async fetchCampaignsForSearch() {
+      try {
+        const campaigns = (await axios(this.campaignsEndpoint)).data.campaigns
+          .mappings.properties;
+
+        this.campaignsList = Object.keys(campaigns);
+      } catch (e) {
+        console.error("Campaigns Fetch Error:", e);
+      }
+    },
+
+    selectCampaign(value) {
+      this.form.title = value;
     },
 
     async setupData() {

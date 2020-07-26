@@ -53,6 +53,7 @@
               <b-form-textarea
                 class="add-campaign__block__form--field add-campaign__block__form--text-filed"
                 v-model="form.text"
+                required
               ></b-form-textarea>
             </b-form-group>
 
@@ -63,7 +64,6 @@
                 id="input-url"
                 v-model="form.url"
                 type="text"
-                required
               ></b-form-input>
             </b-form-group>
           </b-col>
@@ -101,6 +101,12 @@ import AutocompleteInput from "@/components/AutocompleteInput.vue";
 
 export default {
   name: "AddCampaign",
+
+  metaInfo() {
+    return {
+      title: this.$title("Add Campaign"),
+    };
+  },
 
   components: {
     BIconCloudUpload,

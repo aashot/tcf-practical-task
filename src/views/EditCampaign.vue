@@ -2,6 +2,7 @@
   <b-form class="campaign-form" @submit.prevent="submitComposeForm" autocomplete="off">
     <div class="edit-campaign">
       <b-container class="edit-campaign__block">
+        <base-page-loader v-if="pageLoaderOn" customClass="edit-campaign__block--page-preloader" />
         <b-row class="edit-campaign__block__form">
           <b-col cols="4">
             <div class="edit-campaign__block__form__upload-image">
@@ -45,6 +46,7 @@
               <b-form-textarea
                 class="edit-campaign__block__form--field edit-campaign__block__form--text-filed"
                 v-model="form.text"
+                required
               ></b-form-textarea>
             </b-form-group>
 
@@ -55,7 +57,6 @@
                 id="input-url"
                 v-model="form.url"
                 type="text"
-                required
               ></b-form-input>
             </b-form-group>
           </b-col>
@@ -95,6 +96,12 @@ import AutocompleteInput from "@/components/AutocompleteInput.vue";
 export default {
   name: "EditCampaign",
 
+  metaInfo() {
+    return {
+      title: this.$title("Edit Campaign"),
+    };
+  },
+
   components: {
     BIconCloudUpload,
     AutocompleteInput,
@@ -108,6 +115,7 @@ export default {
       text: null,
       url: null,
     },
+    pageLoaderOn: true,
     preloaderOn: false,
     campaign: null,
     campaignsEndpoint: "https://search.crossprom.com/campaigns",
@@ -158,6 +166,8 @@ export default {
       this.form.title = this.campaign.title;
       this.form.text = this.campaign.text;
       this.form.url = this.campaign.url;
+
+      this.pageLoaderOn = false;
     },
 
     onFileChange(e) {

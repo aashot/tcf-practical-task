@@ -1,12 +1,15 @@
 <template>
-  <div class="base-page-lader">
+  <div class="base-page-lader" :class="customClass">
     <b-spinner></b-spinner>
   </div>
 </template>
 
 <script>
 export default {
-  name: "BasePageLoader"
+  name: "BasePageLoader",
+  props: {
+    customClass: String,
+  },
 };
 </script>
 

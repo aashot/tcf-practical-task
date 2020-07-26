@@ -4,7 +4,6 @@ export default {
     namespaced: true,
     actions: {
         async fetchCampaigns({ commit, dispatch }) {
-            // eslint-disable-next-line no-useless-catch
             try {
                 const uid = await dispatch('auth/getUserId', null, { root: true });
                 const campaigns = (await firebase.database().ref('/users/' + uid + '/campaigns').once('value')).val() || {};
@@ -19,7 +18,6 @@ export default {
         },
 
         async fetchCampaignByKey({ commit, dispatch }, payload) {
-            // eslint-disable-next-line no-useless-catch
             try {
                 const uid = await dispatch('auth/getUserId', null, { root: true });
                 const campaign = (await firebase.database().ref('/users/' + uid + '/campaigns/' + payload).once('value')).val() || {};
@@ -32,7 +30,6 @@ export default {
         },
 
         async addCampaign({ commit, dispatch }, payload) {
-            // eslint-disable-next-line no-useless-catch
             try {
                 const uid = await dispatch('auth/getUserId', null, { root: true });
                 const snapshot = await firebase.storage().ref('/users/' + uid + '/campaigns/' + payload.campaignId).put(payload.img);
@@ -50,7 +47,6 @@ export default {
         },
 
         async editCampaign({ commit, dispatch }, payload) {
-            // eslint-disable-next-line no-useless-catch
             try {
                 const uid = await dispatch('auth/getUserId', null, { root: true });
                 if (payload.img) {
@@ -67,10 +63,8 @@ export default {
         },
 
         async deleteCampaign({ commit, dispatch }, payload) {
-            // eslint-disable-next-line no-useless-catch
             try {
                 const uid = await dispatch('auth/getUserId', null, { root: true });
-                console.log(payload);
                 await firebase.database().ref('/users/' + uid + '/campaigns').child(payload.key).remove();
                 await firebase.storage().ref('/users/' + uid + '/campaigns/' + payload.campaignId).delete();
             } catch (e) {

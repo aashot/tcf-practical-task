@@ -46,21 +46,27 @@ import CampaignCard from "@/components/CampaignCard.vue";
 export default {
   name: "dashboard",
 
+  metaInfo() {
+    return {
+      title: this.$title("Dashboard"),
+    };
+  },
+
   components: {
-    CampaignCard
+    CampaignCard,
   },
 
   computed: {
     ...mapState({
-      campaigns: state => state.campaigns
-    })
+      campaigns: (state) => state.campaigns,
+    }),
   },
 
   data() {
     return {
       selectedCampaignToDelete: null,
       preloaderOn: false,
-      pageLoaderOn: true
+      pageLoaderOn: true,
     };
   },
 
@@ -102,8 +108,8 @@ export default {
         this.preloaderOn = false;
         this.$bvModal.hide("deleteCampaign");
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

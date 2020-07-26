@@ -1,12 +1,14 @@
-import '@babel/polyfill';
-import 'mutationobserver-shim';
 import Vue from 'vue';
-import './plugins/bootstrap-vue';
 import App from './App.vue';
 import router from './router';
+import VueMeta from 'vue-meta';
 import store from './store';
 import firebase from "firebase/app";
 import firebaseConfig from '@/firebase/firebaseConfig.js';
+import titlePlugin from '@/utils/title.plugin.js';
+import '@babel/polyfill';
+import 'mutationobserver-shim';
+import './plugins/bootstrap-vue';
 import 'firebase/auth';
 import 'firebase/database';
 import 'firebase/storage';
@@ -18,6 +20,12 @@ Vue.component(
 Vue.component(
   'BasePageLoader', () => import('@/components/elements/BasePageLoader.vue')
 );
+
+
+// Custom plugins 
+Vue.use(titlePlugin);
+
+Vue.use(VueMeta);
 
 firebase.initializeApp(firebaseConfig);
 

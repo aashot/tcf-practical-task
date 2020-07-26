@@ -55,21 +55,27 @@ import { mapActions, mapState } from "vuex";
 export default {
   name: "SingUp",
 
+  metaInfo() {
+    return {
+      title: this.$title("Sign Up"),
+    };
+  },
+
   components: {
-    BasePasswordInput
+    BasePasswordInput,
   },
 
   data: () => ({
     name: null,
     email: null,
     password: null,
-    preloaderOn: false
+    preloaderOn: false,
   }),
 
   computed: {
     ...mapState({
-      error: state => state.error
-    })
+      error: (state) => state.error,
+    }),
   },
 
   watch: {
@@ -79,9 +85,9 @@ export default {
         title: "Sing Up Error",
         autoHideDelay: 5000,
         appendToast: false,
-        variant: "danger"
+        variant: "danger",
       });
-    }
+    },
   },
 
   methods: {
@@ -93,7 +99,7 @@ export default {
       const formData = {
         name: this.name,
         email: this.email,
-        password: this.password
+        password: this.password,
       };
 
       try {
@@ -102,7 +108,7 @@ export default {
         setTimeout(() => {
           this.$router.push({
             name: "login",
-            params: { requiresUserEmailVerification: true }
+            params: { requiresUserEmailVerification: true },
           });
         }, 200);
       } catch (e) {
@@ -110,8 +116,8 @@ export default {
       } finally {
         this.preloaderOn = false;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

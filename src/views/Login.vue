@@ -42,27 +42,33 @@ import BasePasswordInput from "@/components/elements/BasePasswordInput.vue";
 export default {
   name: "Login",
   props: {
-    requiresUserEmailVerification: Boolean
+    requiresUserEmailVerification: Boolean,
+  },
+
+  metaInfo() {
+    return {
+      title: this.$title("Login"),
+    };
   },
 
   components: {
-    BasePasswordInput
+    BasePasswordInput,
   },
 
   data: () => ({
     email: null,
     password: null,
-    preloaderOn: false
+    preloaderOn: false,
   }),
 
   computed: {
     ...mapState({
-      error: state => state.error
+      error: (state) => state.error,
     }),
 
     isUserEmailVerified() {
       return firebase.auth().currentUser.emailVerified;
-    }
+    },
   },
 
   watch: {
@@ -72,9 +78,9 @@ export default {
         title: "Login Error",
         autoHideDelay: 5000,
         appendToast: false,
-        variant: "danger"
+        variant: "danger",
       });
-    }
+    },
   },
 
   created() {
@@ -83,7 +89,7 @@ export default {
         title: "Success!",
         autoHideDelay: 5000,
         appendToast: false,
-        variant: "success"
+        variant: "success",
       });
     }
   },
@@ -96,7 +102,7 @@ export default {
 
       const formData = {
         email: this.email,
-        password: this.password
+        password: this.password,
       };
 
       try {
@@ -108,7 +114,7 @@ export default {
             title: "Warning!",
             autoHideDelay: 5000,
             appendToast: false,
-            variant: "warning"
+            variant: "warning",
           });
         }
       } catch (e) {
@@ -116,7 +122,7 @@ export default {
       } finally {
         this.preloaderOn = false;
       }
-    }
-  }
+    },
+  },
 };
 </script>

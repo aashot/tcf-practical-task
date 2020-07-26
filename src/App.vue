@@ -24,14 +24,14 @@ export default {
   name: "App",
 
   components: {
-    Navbar
+    Navbar,
   },
 
   computed: {
     ...mapState({
-      theme: state => state.theme,
-      user: state => state.user
-    })
+      theme: (state) => state.theme,
+      user: (state) => state.user,
+    }),
   },
 
   created() {
@@ -42,13 +42,13 @@ export default {
     ...mapMutations(["SET_CURRENT_USER"]),
 
     setCurrentUser() {
-      firebase.auth().onAuthStateChanged(user => {
+      firebase.auth().onAuthStateChanged((user) => {
         if (user && user.emailVerified) {
           this.SET_CURRENT_USER(user);
         }
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

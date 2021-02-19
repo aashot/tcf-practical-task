@@ -4,10 +4,12 @@
       <b-container class="add-campaign__block">
         <b-row>
           <b-col cols="12">
-            <h4 class="add-campaign__block--title">Add cross-promotion information</h4>
+            <h4 class="add-campaign__block--title">Create a new task</h4>
             <p
               class="add-campaign__block--text"
-            >Add cross-promotion information that your partner campaigns are to post in their updates. You can always edit this information to adjust it to your needs.</p>
+            >
+              Create and customize your daily tasks 
+            </p>
           </b-col>
         </b-row>
         <b-row class="add-campaign__block__form">
@@ -58,7 +60,7 @@
             </b-form-group>
 
             <b-form-group id="input-group-url" class="filed-wrap">
-              <span class="filed-label">optional</span>
+              <span class="filed-label">Additional note</span>
               <b-form-input
                 class="add-campaign__block__form--field add-campaign__block__form--url-filed"
                 id="input-url"

@@ -10,7 +10,7 @@
       />
     </div>
 
-    <h4 class="text-center" v-if="!pageLoaderOn && !campaigns.length">No campaigns created</h4>
+    <h4 class="text-center" v-if="!pageLoaderOn && !campaigns.length">No tasks today</h4>
 
     <b-modal
       id="deleteCampaign"
